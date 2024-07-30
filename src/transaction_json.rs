@@ -3,6 +3,7 @@ use serde::Deserialize;
 
 use crate::transaction::Transaction as SystemTransaction;
 use crate::transaction::TransactionType as SystemTransactionType;
+use crate::transaction::TransactionVersion;
 use crate::types as sys_types;
 
 #[derive(Debug, Deserialize, Clone)]
@@ -41,6 +42,7 @@ impl TryInto<SystemTransaction> for TransactionJson {
 
     fn try_into(self) -> Result<SystemTransaction, Error> {
         Ok(SystemTransaction {
+            version: TransactionVersion::default(),
             fee_limit: sys_types::Balance::from_str_radix(&self.fee_limit, 10)
                 .map_err(|e| anyhow!("Can't convert 'fee_limit' from string: {e}"))?,
             nonce: sys_types::Nonce::from_str_radix(&self.nonce, 10)
