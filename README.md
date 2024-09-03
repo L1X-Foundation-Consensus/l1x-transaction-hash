@@ -1,3 +1,6 @@
+Repo Moved to https://github.com/L1X-Foundation-Public/l1x-transaction-hash-calculator-public
+
+
 The tool calculates the hash value of the provided transaction and prints it to stdout
 
 ### How to build
